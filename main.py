@@ -7,13 +7,15 @@ from productos import productos
 import requests
 import datetime
 import plotly.graph_objects as go
+import cotizaciones 
 
-st.title("Tablas de valores de Albion Online")
+st.title("Cotizaciones")
 st.markdown("<br><br>", unsafe_allow_html=True)
 # Menú de navegación
 menu_option = st.sidebar.selectbox("Seleccione la opción:", [
     "Consulta de Productos",
-    "Linea temporal (precio del oro)"
+    "Linea temporal (precio del oro)",
+    "Cotización dolar peso"
 ])
 
 #Selección del producto
@@ -126,6 +128,11 @@ if menu_option == "Consulta de Productos":
         else:
             st.warning("No se encontraron datos para el ítem seleccionado.")
 
+#-------------------------------------------------------------------------------------------------------------------
+
+if menu_option == "Cotización dolar peso":
+    with st.spinner('Cargando datos...'):
+        cotizaciones.mostrar_cotizacion_dolar()
 
 #----------------------------------------------------------------------------------------------------------------
 
